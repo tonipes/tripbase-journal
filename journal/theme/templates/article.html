@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+  <div class="row article-top">
+    <!-- <h1>{{ article.title }}</h1> -->
+    <div class="info">
+      On {{ article.locale_date }}
+
+      {% if article.location %}
+        at
+        <a href="{% if article.locationlink %}{{ article.locationlink }}{% else %}http://maps.google.com/?q={{ article.location }}{% endif %}">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          {{ article.location }}
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+  {{ article.content }}
+{% endblock %}

@@ -1,0 +1,130 @@
+body {
+    background: white;
+    color: black;
+    color: #303030;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+@media screen {
+    .container {
+        max-width: 700px;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .main {
+      margin: 20px;
+    }
+
+    h1 a, h2 a, h3 a, .info a {
+        text-decoration: none;
+    }
+
+    a:link {
+        color: #85ac40;
+    }
+
+    a:visited {
+        color: #61883b;
+    }
+
+    ::selection {
+        background: #dcff9d;
+    }
+
+    ::-moz-selection {
+        background: #e2ffaf;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, .info, .info p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    page-break-inside: avoid;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.25em;
+    letter-spacing: -.02em;
+}
+
+h2 {
+    margin-top: 0.714em;
+    font-size: 1.75em;
+    line-height: 0.714;
+    letter-spacing: -.02em;
+}
+
+p.published {
+    float: right;
+    margin-top: 1em;
+}
+
+.menu-logo {
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+}
+
+.menu-text {
+  text-align: center;
+}
+
+.info {
+    text-align: center;
+    margin: 0;
+}
+
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+}
+
+.gallery-item {
+  padding: 1em;
+}
+
+.gallery-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transition: all 0.2s;
+}
+
+.photo-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-img:hover {
+  -webkit-filter:  brightness(0.5);
+}
+
+.article-top {
+  padding-bottom: 2em;
+}
+
+.paginator {
+    text-align: center;
+    margin: 0;
+}
+
+.paginator-text {
+    text-align: center;
+    margin: 0;
+}

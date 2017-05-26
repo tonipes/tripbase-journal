@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block meta %}
+{% if photo.info.position %}
+  <script src="{{ SITEURL }}/theme/js/googleMap.js"></script>
+  <script>setPoint({{photo.info.location.latitude}},{{photo.info.location.longitude}})</script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdhaXK5ndIGYWAZGIMm3fk7MGjqqLHUVo&callback=initMap">
+  </script>
+{% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 col-xs-12 gallery-item">
+    <img class="photo-img" src="{{ SITEURL }}/{{ photo.article_image }}" alt="Image"></img>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-sm-6 col-xs-12">
+    <div class="photo-info">
+      Photo info here
+    </div>
+  </div>
+  
+  {% if photo.info.position %}
+  <div class="col-sm-6 col-xs-12">
+    <div id="map" class="photo-map" style="height: 300px; width: 100%;">
+
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

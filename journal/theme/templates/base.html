@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    {% block meta %}{% endblock %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css"/>
+  </head>
+  <body>
+
+    <div class="main">
+      <div class="container">
+
+        <div class="row menu row-centered">
+          {% for item in MENU_LINKS %}
+            <div class="col-sm-2 col-xs-4 menu-item col-centered ">
+              <a href="{{ SITEURL }}/{{ item.link }}.html">
+                <i class="menu-logo fa {{ item.icon }}"></i>
+                <p class="menu-text">{{ item.title }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="row site-top">
+          <h1>{{ self.title() }}</h1>
+        </div>
+
+        {% block content %} {% endblock %}
+
+      </div>
+    </div>
+
+  </body>
+</html>
