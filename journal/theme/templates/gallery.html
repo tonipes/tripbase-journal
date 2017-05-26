@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+  {% for photo in photos_page.object_list %}
+    <div class="col-sm-4 col-xs-12 gallery-item">
+      <a href="{{ SITEURL }}/{{ photo.url }}">
+        <img class="gallery-img" src="{{ SITEURL }}/{{ photo.thumbnail_image }}" alt="Image"></img>
+      </a>
+    </div>
+  {% endfor %}
+
+  {% if photos_page.has_other_pages() %}
+    {% with page=photos_page, paginator=photos_paginator, next_page=photos_next_page, prev_page=photos_previous_page %}
+      {% include 'pagination.html' %}
+    {% endwith %}
+  {% endif %}
+
+</div>
+
+{% endblock %}

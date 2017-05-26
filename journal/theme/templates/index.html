@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} {{ SITENAME }} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+  {% for article in articles_page.object_list %}
+    <div class="row">
+
+      <div class="col-sm-9 col-xs-12">
+        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+        {{ article.summary }}
+      </div>
+
+      <div class="col-sm-3 hidden-xs">
+        <p class="published">{{ article.locale_date }}</p>
+      </div>
+
+    </div>
+  {% endfor %}
+
+  {% if articles_page.has_other_pages() %}
+    {% with page=articles_page, paginator=articles_paginator, next_page=articles_next_page, prev_page=articles_previous_page %}
+      {% include 'pagination.html' %}
+    {% endwith %}
+  {% endif %}
+
+</div>
+
+{% endblock %}

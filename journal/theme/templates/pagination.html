@@ -1,0 +1,29 @@
+{% if DEFAULT_PAGINATION %}
+<div class="row paginator">
+  <div class="col-sm-12 col-xs-12">
+    <p class="paginator-text">
+      {% if page.has_previous() %}
+          <a href="{{ SITEURL }}/{{ prev_page.url }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </a>
+      {% else %}
+          <a href="#" style="visibility: hidden;">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </a>
+      {% endif %}
+
+      {{ page.number }} / {{ paginator.num_pages }}
+
+      {% if page.has_next() %}
+          <a href="{{ SITEURL }}/{{ next_page.url }}">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        {% else %}
+          <a href="#" style="visibility: hidden;">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+      {% endif %}
+    </p>
+  </div>
+<div>
+{% endif %}
