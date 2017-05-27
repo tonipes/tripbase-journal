@@ -3,10 +3,10 @@
 {% block title %}{% endblock %}
 
 {% block meta %}
-{% if photo.info.position %}
+{% if photo.info.location %}
   <script src="{{ SITEURL }}/theme/js/googleMap.js"></script>
   <script>setPoint({{photo.info.location.latitude}},{{photo.info.location.longitude}})</script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdhaXK5ndIGYWAZGIMm3fk7MGjqqLHUVo&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap">
   </script>
 {% endif %}
 {% endblock %}
@@ -21,11 +21,11 @@
 
   <div class="col-sm-6 col-xs-12">
     <div class="photo-info">
-      Photo info here
+      Photo info here. {{ photo.info }}
     </div>
   </div>
-  
-  {% if photo.info.position %}
+
+  {% if photo.info.location %}
   <div class="col-sm-6 col-xs-12">
     <div id="map" class="photo-map" style="height: 300px; width: 100%;">
 
