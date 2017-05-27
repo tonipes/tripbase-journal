@@ -1,0 +1,40 @@
+image: docker:git
+stages:
+- build
+- test
+- release
+- deploy
+
+variables:
+  CONTAINER_TEST_IMAGE: registry.example.com/tonipes/tripbase-journal:$CI_BUILD_REF_NAME
+  CONTAINER_RELEASE_IMAGE: registry.example.com/tonipes/tripbase-journal:latest
+
+before_script:
+  - echo "HERE: '$CI_BUILD_TOKEN' && echo $CI_BUILD_TOKEN &&docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.example.com
+
+build:
+  stage: build
+  script:
+    - docker build -t $CONTAINER_TEST_IMAGE .
+    - docker push $CONTAINER_TEST_IMAGE
+
+test:
+  stage: test
+  script:
+    - docker run $CONTAINER_TEST_IMAGE echo "Test!"
+
+release-image:
+  stage: release
+  script:
+    - docker pull $CONTAINER_TEST_IMAGE
+    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+    - docker push $CONTAINER_RELEASE_IMAGE
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy!"
+  only:
+    - master
